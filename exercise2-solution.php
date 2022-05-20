@@ -39,7 +39,7 @@ function get_order_with_details($id) {
     global $db;
     
     /// specify sql query  using a prepared statement
-    $orders_query = $db->prepare("SELECT * FROM `order_details` WHERE `order_id` = :id"); 
+    $orders_query = $db->prepare("SELECT * FROM `order` JOIN `order_details` ON `order`.`id`=`order_details`.`order_id` WHERE `order_details`.`order_id` = :id"); 
 
     // bind 
     $orders_query->bindParam(':id', $id); 
